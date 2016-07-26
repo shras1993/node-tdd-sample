@@ -46,7 +46,7 @@ describe.only('Facebook model test here',  () => {
       console.log(`findFriend:::${findFriend}`);
 
 
-      findFriend.should.have.valueOf(friends[0].id);
+      findFriend.should.have.valueOf(friendsList[0].id);
 
       done();
 
