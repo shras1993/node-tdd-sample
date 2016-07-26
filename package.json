@@ -11,8 +11,8 @@
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "prepublish": "npm run compile",
     "test": "./node_modules/.bin/mocha",
-    "watchdb": "sqlite3 database.db 'select * from users'",
-    "watchPost": "sqlite3 database.db 'select * from posts'"
+    "watchdb": "sqlite3 database.db 'select * from friends'",
+    "watchPost": "sqlite3 database.db 'select * from friends'"
   },
   "devDependencies": {
     "babel-cli": "*",
