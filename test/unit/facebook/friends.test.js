@@ -27,8 +27,18 @@ describe.only('Facebook model test here',  () => {
     rawFriends.length.should.be.above(0);
   });
 
+  it('Create your friends list', async (done) => {
+
+    try {
+      let formattedFriends = rawFriends.map((rawFriend) => {
+                               let friend = {};
+                               friend.name = rawFriend.name;
+                               friend.email = rawFriend.email;
+                               friend.facebookId = rawFriend.id;
 
   it('create your friends list', async (done) => {
+                               return friend;
+                             });
 
     try{
       friendsList = await facebookHelper.getFriends();
