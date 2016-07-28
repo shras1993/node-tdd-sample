@@ -36,7 +36,6 @@ describe.only('Facebook model test here',  () => {
                                friend.email = rawFriend.email;
                                friend.facebookId = rawFriend.id;
 
-  it('create your friends list', async (done) => {
                                return friend;
                              });
 
