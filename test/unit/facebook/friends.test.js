@@ -10,7 +10,7 @@ describe.only('Facebook model test here',  () => {
   before( async (done) => {
 
     let userId = "718145738235098";
-    let token = "EAACEdEose0cBAKwxkCTHTxZCt4gFmqgCJ79QZAtnzUrg2gaibUqFWZAY3BEBrqOedhc96FB6w6EsIuXpGvOpZBzoUSGVsu8mGGw9GCZAZAV9CTj64JL4NOPkijgVL95DZAr0EccRSbc5rHDHLNZBnup7WK2aFkOFAs0g5QzPUSya6QZDZD";
+    let token = "EAACEdEose0cBAAf3LjhVUNt2RFiaLwAeYKEutSUjb707wZABVylwox6CeZBW5kSvCZCAQM2Dg5PTeFk67NvmCzBTYWEaAMgJKXmzx4sWDFUAtlKP0pe7HoauD5cH8kAp3NaExlLbmtVqrqf1QNZCOY3tfTs10CYibGkzAeojLwZDZD";
     facebookHelper = await new FacebookHelper({userId, token});
     model = await task1_initModel();
 
@@ -55,12 +55,20 @@ describe.only('Facebook model test here',  () => {
   it('Find your friend', async (done) => {
     try {
 
-      let resultFriend = await model.friends.findOne({facebookId: rawFriends[0].id});
+      let resultFriends = await model.friends.findAll();
 
-      // console.log(`id::::::${friends[0].id}`);
-      console.log(`result of findFriend:::${resultFriend}`);
+      let dataFbIds = resultFriends.map((resultfriend) => {
+            return resultfriend.facebookId;
+      });
+      console.log(dataFbIds);
 
-      resultFriend.should.not.be.eq(null);
+      let apiFriendsId = rawFriends.map((friend) => {
+            return friend.id;
+      });
+      console.log(apiFriendsId);
+
+      dataFbIds.should.be.eql(apiFriendsId);
+      // resultFriend.should.not.be.eq(null);
 
       done();
 
