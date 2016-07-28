@@ -71,32 +71,33 @@ describe.only('Facebook model test here',  () => {
   });
 
   it('Update your friends data', async (done) => {
-    try{
-      const upd = {
-        name: "Trunk-studio",
-        email: "hellojs@trunk.studio",
+    try {
+      const targetData = {
+        name: 'Trunk-studio',
+        email: 'hellojs@trunk.studio',
       }
 
-      let updFriend = await model.friends.findById(friends[3].id);
-      console.log(updFriend);
+      rawFriends.length.should.be.above(4);
 
-      updFriend.name = upd.name;
-      updFriend.email = upd.email;
+      let friendToUpdate = await model.friends.findOne({facebookId: rawFriends[3].id});
+      console.log(`friendToUpdate: ${friendToUpdate}`);
 
-      let result = await updFriend.save();
+      friendToUpdate.name = targetData.name;
+      friendToUpdate.email = targetData.email;
 
-      result.name.should.be.eq(upd.name);
-      result.email.should.be.eq(upd.email);
+      let result = await friendToUpdate.save();
+
+      result.name.should.be.eq(targetData.name);
+      result.email.should.be.eq(targetData.email);
 
       done();
-    } catch(e){
+    } catch(e) {
       done(e);
     }
   });
 
 
   it('Delete your friend data', async (done) =>{
-
     try{
 
       let trunk = await model.friends.findOne({ where : {name: 'Trunk-studio'}});
