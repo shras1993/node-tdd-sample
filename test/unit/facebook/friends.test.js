@@ -43,7 +43,7 @@ describe.only('Facebook model test here',  () => {
       // console.log(`Model: ${model}, friends: ${model.friends}`);
       friends = await model.friends.bulkCreate(formattedFriends);
 
-      result.length.should.be.eq(1);
+      friends.length.should.be.eq(rawFriends.length);
 
       done();
     } catch(e) {
