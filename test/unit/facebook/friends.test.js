@@ -39,17 +39,14 @@ describe.only('Facebook model test here',  () => {
                                return friend;
                              });
 
-    try{
-      friendsList = await facebookHelper.getFriends();
-      console.log('friendsList:::::' + friendsList);
-      console.log(`Model: ${model}, friends: ${model.friends}`)
-      friends = await model.friends.bulkCreate(friendsList);
+      // console.log(`friendsList:::::${friendsList}`);
+      // console.log(`Model: ${model}, friends: ${model.friends}`);
+      friends = await model.friends.bulkCreate(formattedFriends);
 
-      let result = friends.filter((friend) => { return friend.name == 'Calvin Huang' })
-      result.length.should.be.eq(1)
+      result.length.should.be.eq(1);
 
       done();
-    } catch(e){
+    } catch(e) {
       done(e);
     }
 
