@@ -53,15 +53,14 @@ describe.only('Facebook model test here',  () => {
   });
 
   it('Find your friend', async (done) => {
-    try{
+    try {
 
-      let findFriend = await model.friends.findOne({id: friends.id});
+      let resultFriend = await model.friends.findOne({facebookId: rawFriends[0].id});
 
       // console.log(`id::::::${friends[0].id}`);
-      console.log(`findFriend:::${findFriend}`);
+      console.log(`result of findFriend:::${resultFriend}`);
 
-
-      findFriend.should.have.valueOf(friendsList[0].id);
+      resultFriend.should.not.be.eq(null);
 
       done();
 
