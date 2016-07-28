@@ -23,6 +23,8 @@ describe.only('Facebook model test here',  () => {
     }
   });
 
+  it('If friends from FB API should not empty', () => {
+    rawFriends.length.should.be.above(0);
   });
 
 
