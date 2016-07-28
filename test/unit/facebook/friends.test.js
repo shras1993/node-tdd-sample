@@ -4,7 +4,7 @@ import task1_initModel from '../../../src/database/task1';
 describe.only('Facebook model test here',  () => {
   let facebookHelper = null;
   let model = null;
-  let friendsList = [];
+  let rawFriends = [];
   let friends = [];
 
   before( async (done) => {
