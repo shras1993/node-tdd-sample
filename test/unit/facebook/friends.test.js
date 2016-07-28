@@ -14,7 +14,14 @@ describe.only('Facebook model test here',  () => {
     facebookHelper = await new FacebookHelper({userId, token});
     model = await task1_initModel();
 
-    done();
+    try {
+      rawFriends = await facebookHelper.getFriends()
+
+      done();
+    } catch(e) {
+      done(e);
+    }
+  });
 
   });
 
